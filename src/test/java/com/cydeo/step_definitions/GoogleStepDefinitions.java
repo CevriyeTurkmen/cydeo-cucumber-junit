@@ -1,9 +1,11 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.pages.GoogleSearchPage;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class GoogleStepDefinitions {
@@ -20,4 +22,18 @@ public class GoogleStepDefinitions {
         Driver.closeDriver();
     }
 
+    GoogleSearchPage googleSearchPage=new GoogleSearchPage();
+    @When("user types apple and clicks enter")
+    public void userTypesAppleAndClicksEnter() {
+        googleSearchPage.cookies.click();
+        googleSearchPage.searchBox.sendKeys("apple"+ Keys.ENTER);
+
+    }
+
+    @Then("user sees apple in the title")
+    public void userSeesAppleInTheTitle() {
+        String expectedTitle="apple - Google Search";
+        String actualTitle=Driver.getDriver().getTitle();
+        Assert.assertEquals(expectedTitle,actualTitle);
+    }
 }
