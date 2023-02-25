@@ -11,42 +11,43 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    @Before (order = 1)
+    @Before(order = 1)
     public void setupScenario() {
         System.out.println("====Setting up browser using cucumber @Before");
 
     }
-    @Before (value = "@login", order = 2)
+
+    @Before(value = "@login", order = 2)
     public void setupScenarioForLogins() {
         System.out.println("====this will only apply to scenarios with @login tag");
 
     }
 
-    @Before (value = "@db", order = 2)
+    @Before(value = "@db", order = 2)
     public void setupForDatabaseScenarios() {
         System.out.println("====this will only apply to scenarios with @db tag");
 
     }
 
     @After
-    public void tearDown(Scenario scenario){
+    public void tearDown(Scenario scenario) {
 
-  //  if (scenario.isFailed()) {
+        //  if (scenario.isFailed()) {
 
-        byte [] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-        scenario.attach(screenshot,"img/png", scenario.getName());
+        byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenshot, "img/png", scenario.getName());
         Driver.closeDriver();
         //System.out.println("====Closing browser using cucumber @After");
         //System.out.println("====Scenario ended/take screenshot if failed");
     }
 
     @BeforeStep
-    public void setupStep(){
+    public void setupStep() {
         System.out.println("-------------->applying setup using @BeforeStep ");
     }
 
     @AfterStep
-    public void afterStep(){
+    public void afterStep() {
         System.out.println("---------------->applying tearDown using @AfterStep");
 
     }
