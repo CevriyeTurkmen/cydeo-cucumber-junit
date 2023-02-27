@@ -6,10 +6,9 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ExcellRead {
+public class ExcelRead {
 
 @Test
     public void read_from_excel_file() throws IOException {
@@ -24,23 +23,23 @@ public class ExcellRead {
 
     System.out.println(sheet.getRow(1).getCell(0));
 
-int usedRowns=sheet.getPhysicalNumberOfRows();
-    System.out.println(usedRowns);
+int usedRows=sheet.getPhysicalNumberOfRows();
+    System.out.println(usedRows);
 
     int lastUsedRow= sheet.getLastRowNum();
     System.out.println(lastUsedRow);
 
-    for (int rowNum = 0; rowNum < usedRowns; rowNum++) {
-        if (sheet.getRow(rowNum).getCell(0).equals("Vinod")){
+    for (int rowNum = 0; rowNum < usedRows; rowNum++) {
+        if (sheet.getRow(rowNum).getCell(0).toString().equals("Vinod")){
 
             System.out.println(sheet.getRow(rowNum).getCell(0));
         }
     }
 
-    for (int rowNum = 0; rowNum < usedRowns; rowNum++) {
-        if (sheet.getRow(rowNum).getCell(0).equals("Linda")){
+    for (int rowNum = 0; rowNum < usedRows; rowNum++) {
+        if (sheet.getRow(rowNum).getCell(0).toString().equals("Linda")){
 
-            System.out.println("sheet.getRow(rowNum).getCell(2) = " + sheet.getRow(rowNum).getCell(2));
+            System.out.println("Linda's job ID is = " + sheet.getRow(rowNum).getCell(2));
         }
     }
 
